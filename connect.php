@@ -24,7 +24,7 @@ $limbs = $_POST['limbs'];
 $superpowers = $_POST['superpowers'];
 $bio = $_POST['bio'];
 
-$conn = new mysqli('localhost','u52987','9793494','u52987');
+$conn = new mysqli('localhost','u52980','7655906','u52980');
 if ($conn->connect_error) {
     die('Connection failed: '.$conn->connection_error);
 } else {
@@ -50,4 +50,3 @@ if ($conn->connect_error) {
     </div>
 </body>
 </html>
-
