@@ -28,7 +28,7 @@ $conn = new mysqli('localhost','u52987','9793494','u52987');
 if ($conn->connect_error) {
     die('Connection failed: '.$conn->connection_error);
 } else {
-    $stmt = $conn->prepare("INSERT INTO users(name, email, birth_date, gender, limbs, bio)
+    $stmt = $conn->prepare("INSERT INTO users (name, email, birth_date, gender, limbs, bio)
     VALUES (?, ?, ?, ?, ?, ?)");
     $stmt->bind_param("ssssis", $name, $email, $birth_date, $gender, $limbs, $bio);
     $stmt->execute();
