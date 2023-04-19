@@ -32,7 +32,7 @@ if ($conn->connect_error) {
 } else {
     $stmt = $conn->prepare("INSERT INTO users(name, email, birth_date, gender, limbs, bio, contract)
     VALUES (?, ?, ?, ?, ?, ?, ?)");
-    $stmt->bind_param("ssssiss", $name, $email, $birth_date, $gender, $limbs, $bio, $contract);
+    $stmt->bind_param( $name, $email, $birth_date, $gender, $limbs, $bio, $contract);
     $stmt->execute();
     $last_id = mysqli_insert_id($conn);
     foreach ($superpowers as $item) {
