@@ -23,16 +23,14 @@ $gender = $_POST['gender'];
 $limbs = $_POST['limbs'];
 $superpowers = $_POST['superpowers'];
 $bio = $_POST['bio'];
-$contract = $_POST['contract'];
 
-//Database connection
 $conn = new mysqli('localhost','u52987','9793494','u52987');
 if ($conn->connect_error) {
     die('Connection failed: '.$conn->connection_error);
 } else {
-    $stmt = $conn->prepare("INSERT INTO users(name, email, birth_date, gender, limbs, bio, contract)
-    VALUES (?, ?, ?, ?, ?, ?, ?)");
-    $stmt->bind_param( $name, $email, $birth_date, $gender, $limbs, $bio, $contract);
+    $stmt = $conn->prepare("INSERT INTO users(name, email, birth_date, gender, limbs, bio)
+    VALUES (?, ?, ?, ?, ?, ?)");
+    $stmt->bind_param("ssssis", $name, $email, $birth_date, $gender, $limbs, $bio);
     $stmt->execute();
     $last_id = mysqli_insert_id($conn);
     foreach ($superpowers as $item) {
@@ -45,10 +43,11 @@ if ($conn->connect_error) {
 ?>
 <body>
     <div class="container vertical-center">
-        <div class="container rounded-pill shadow-lg bg-dark text-white text-center">
-            <p class="fs-3 fw-bold">Success!!!</p>
-            <p class="fs-4 fw-bold">Your id: <?=$last_id?></p>
+        <div class="container rounded shadow-lg bg-light border border-dark border-3 text-center">
+            <p class="fs-3 fw-bold">Форма отправлена успешно!</p>
+            <p class="fs-4 fw-bold">Ваш id: <?=$last_id?></p>
         </div>
     </div>
 </body>
 </html>
+
